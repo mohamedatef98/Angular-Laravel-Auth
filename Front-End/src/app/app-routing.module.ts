@@ -6,11 +6,12 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AllComponent } from './components/cars/all/all.component';
 import { OneComponent } from './components/cars/one/one.component';
 import { FormComponent } from './components/cars/form/form.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "login", component: LoginComponent},
-  {path: "sign-up", component: SignUpComponent},
+  {path: "signup", component: SignUpComponent},
   {path: "cars", children: [
     {path: '', component: AllComponent},
     {path: 'create', component: FormComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'edit', component: FormComponent}
     ]},
   ]},
+  {path: "**", component: NotFoundComponent}
 ];
 
 @NgModule({
