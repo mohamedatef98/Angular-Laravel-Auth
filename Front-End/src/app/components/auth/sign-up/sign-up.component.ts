@@ -17,18 +17,17 @@ export class SignUpComponent{
 
   submit(form: NgForm){
     this.errors = [];
-    this.auth.signUp(form.value.name, form.value.email, form.value.password).subscribe(
+    this.auth.signUp(form.value.name, form.value.email, form.value.password, form.value.password_confirmation).subscribe(
       res=>this.handleResponse(res),
         err=>{
-          let errors = err.error.errors;
+        console.log(err)
+          let errors = err.error;
           for(let errkey in errors)
-            errors[errkey].forEach((err)=>this.errors.push(err))
+            this.errors.push(errors[errkey])
         });
   }
 
   handleResponse(res){
-    this.tokenService.handle(res.accessToken);
-    this.auth.loggedIn.next(true);
-    this.router.navigate(['../cars'], {relativeTo: this.route})
+    this.router.navigate(['../login'], {relativeTo: this.route})
   }
 }

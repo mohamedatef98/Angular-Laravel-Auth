@@ -21,14 +21,15 @@ export class LoginComponent{
       res=>this.handleResponse(res),
       err=>{
         console.log(err);
-        let errors = err.error.errors;
+        let errors = err.error;
         for(let errkey in errors)
-          errors[errkey].forEach((err)=>this.errors.push(err))
+          this.errors.push(errors[errkey])
       });
   }
 
   handleResponse(res){
-    this.tokenService.handle(res.accessToken);
+    console.log(res);
+    this.tokenService.handle(res.access_token);
     this.auth.loggedIn.next(true);
     this.router.navigate(['../cars'], {relativeTo: this.route})
   }

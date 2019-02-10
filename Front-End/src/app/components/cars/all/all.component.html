@@ -1,3 +1,27 @@
-<h1>
-  All Cars !!!!
-</h1>
+<div class="alert alert-primary" role="alert">
+  <div class="row text-center">
+    <div class="col-8 offset-2">
+      {{ cars.length > 0 ? "Heres Is All Our Cars !!!!" : "No Cars !!" }}
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6 text-center" *ngIf="loading">
+    <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="card align-items-center" style="width: 10rem;" *ngFor="let car of cars">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{car.model}}</h5>
+        <p class="card-text"><b>{{car.make}}</b> {{car.year}}</p>
+        <a [routerLink]="car.id" class="btn btn-primary">Go to Car</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

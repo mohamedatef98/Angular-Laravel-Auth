@@ -13,11 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 
 Route::post('login', 'UserController@login');
 Route::post('signup', 'UserController@signup');
 Route::post('logout', 'UserController@logout');
+
+
+//Route::prefix('cars', function (){
+//    Route::get('', 'CarController@index');
+//    Route::post('', 'CarController@create');
+//
+//    Route::get('{id}', 'CarController@show');
+//    Route::delete('{id}', 'CarController@destroy');
+//    Route::post('{id}', 'CarController@update');
+//})->middleware('api');
+
+
+Route::get('/cars', 'CarController@index')->middleware('auth:api');

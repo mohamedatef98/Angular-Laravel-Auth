@@ -18,8 +18,8 @@ export class AuthService{
         return this.http.post(api + "/login", {email, password});
     }
 
-    signUp(name: string, email: string, password: string){
-        return this.http.post(api + '/signup', {name, email, password});
+    signUp(name: string, email: string, password: string, password_confirmation: string){
+        return this.http.post(api + '/signup', {name, email, password, password_confirmation});
     }
 
     logout(name: string){

@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { AuthService } from './services/auth.service';
 import {TokenService} from './services/token.service';
+import {CarsService} from './services/cars.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {TokenService} from './services/token.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, TokenService],
+  providers: [AuthService, TokenService, CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
