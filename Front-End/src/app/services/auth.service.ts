@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {api} from  "../globals";
+import {Subject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService{
-    private user;
+    public loggedIn: Subject<boolean> = new Subject<boolean>();
+
+
 
     constructor(private  http: HttpClient){}
 
@@ -17,5 +20,9 @@ export class AuthService{
 
     signUp(name: string, email: string, password: string){
         return this.http.post(api + '/signup', {name, email, password});
+    }
+
+    logout(name: string){
+      return this.http.post(api + '/logout', {name});
     }
 }

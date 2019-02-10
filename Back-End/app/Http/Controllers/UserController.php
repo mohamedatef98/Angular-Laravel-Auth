@@ -14,12 +14,12 @@ class UserController extends Controller
         
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
             $user = auth()->user();
-            $res = $user->createToken('MyApp')-> accessToken;
+            $res = $user->createToken('MyApp');
             return response()->json($res);
         } 
         
         else{ 
-            return response()->json(['error'=>'Wrong Email Or Password'], 401);
+            return response()->json(['errors'=>['error'=>['Wrong Email Or Password']]], 401);
         } 
     }
 
@@ -46,6 +46,6 @@ class UserController extends Controller
     }
 
     public function logout(Request $request){
-
+        
     }
 }

@@ -12,8 +12,11 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AllComponent } from './components/cars/all/all.component';
 import { OneComponent } from './components/cars/one/one.component';
 import { FormComponent } from './components/cars/form/form.component';
-import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
+
+import { AuthService } from './services/auth.service';
+import {TokenService} from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

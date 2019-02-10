@@ -7,11 +7,13 @@ import { AllComponent } from './components/cars/all/all.component';
 import { OneComponent } from './components/cars/one/one.component';
 import { FormComponent } from './components/cars/form/form.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import {NotLoggedInService} from './services/notLoggedIn.service';
+import {LoggedInService} from './services/loggedIn.service';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
-  {path: "login", component: LoginComponent},
-  {path: "signup", component: SignUpComponent},
+  {path: "login", component: LoginComponent, canActivate: [NotLoggedInService]},
+  {path: "signup", component: SignUpComponent, canActivate: [NotLoggedInService]},
   {path: "cars", children: [
     {path: '', component: AllComponent},
     {path: 'create', component: FormComponent},
@@ -19,7 +21,7 @@ const routes: Routes = [
       {path: '', component: OneComponent},
       {path: 'edit', component: FormComponent}
     ]},
-  ]},
+  ], canActivate: [LoggedInService]},
   {path: "**", component: NotFoundComponent}
 ];
 

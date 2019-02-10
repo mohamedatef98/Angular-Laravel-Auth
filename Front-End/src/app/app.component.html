@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Cars And Coffee</a>
+    <a class="navbar-brand" routerLink="/">Cars And Coffee</a>
 
     <div>
-      <a class="navbar-brand" routerLink="login">Login</a>
-      <a class="navbar-brand" routerLink="signup">Signup</a>
+      <a class="navbar-brand" routerLink="login" *ngIf="!loggedIn">Login</a>
+      <a class="navbar-brand" routerLink="signup" *ngIf="!loggedIn">Signup</a>
+      <a class="navbar-brand" href="#" *ngIf="loggedIn" (click)="logout($event)">Logout</a>
     </div>
 </nav>
 <router-outlet></router-outlet>
