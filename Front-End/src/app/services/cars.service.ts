@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {api} from '../globals';
 import {Car} from '../models/car.model';
 import {Subject} from 'rxjs';
+import {TokenService} from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CarsService {
 
   event = new Subject<undefined>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private token: TokenService) { }
 
   getCars(){
     return this.http.get<Car[]>(api + '/cars')
@@ -23,7 +24,9 @@ export class CarsService {
 
   createCar(car: Car){
     this.event.next();
-    return this.http.post(api + '/cars', car)
+    return this.http.post(api + '/cars' , car, {headers: [
+        ''
+      ]})
   }
 
   editCar(id: number, car: Car){

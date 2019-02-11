@@ -1,7 +1,7 @@
 import {Comment} from './comment.model';
 
 export class Car{
-  id: number;
+  id?: number;
 
   make: string;
 
@@ -9,7 +9,7 @@ export class Car{
 
   year: number;
 
-  user_id: number;
+  user_id?: number;
 
   created_at?: string;
 
